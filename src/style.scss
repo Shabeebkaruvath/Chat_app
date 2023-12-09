@@ -1,0 +1,226 @@
+$regcolor: #0068ad;
+$maincolor: #7aff6e;
+$mainfont: "Poppins";
+.App {
+  font-family: $mainfont;
+}
+
+.RegisterMain {
+  background-color: $regcolor;
+  display: flex;
+  align-items: center;
+  height: 100vh;
+  justify-content: center;
+  .RegisterSub {
+    h2 {
+      color: $regcolor;
+    }
+    span:hover {
+      color: blue;
+      cursor: pointer;
+      font-weight: bolder;
+    }
+    span {
+      color: rgb(255, 0, 0);
+      font-variant: petite-caps;
+      cursor: pointer;
+      font-weight: bolder;
+    }
+    background-color: white;
+    padding: 20px 60px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      &::placeholder {
+        color: $regcolor;
+      }
+      input {
+        border-bottom: 1px solid black;
+        border-top: 0px;
+        border-left: 0px;
+        border-right: 0px;
+        height: 25px;
+        cursor: pointer;
+      }
+
+      input[type="file"] {
+        border: 0;
+        cursor: pointer;
+      }
+      .RegisterButton {
+        background-color: $regcolor;
+        border: 0;
+        cursor: pointer;
+        height: 30px;
+        align-items: center;
+        font-variant: petite-caps;
+        color: white;
+        font-weight: bolder;
+      }
+      .RegisterButton:hover {
+        background-color: white;
+        border: 1px solid black;
+        cursor: pointer;
+        color: black;
+        height: 30px;
+        align-items: center;
+      }
+    }
+  }
+}
+.home {
+  background-color: $regcolor;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgb(255, 255, 255);
+  .homeSub {
+    border: 1px solid white;
+    border-radius: 10px;
+    width: 70%;
+    height: 80%;
+    display: flex;
+    overflow: hidden;
+    .slidebar {
+      flex: 1;
+      background-color: #3e3c62;
+      color: black;
+      .navbar {
+        height: 50px;
+        padding: 10px;
+        color: white;
+        background-color: #2f2c53;
+        display: flex;
+        align-items: center;
+        .logo {
+          font-weight: bolder;
+          font-family: $mainfont;
+          margin: 5px;
+          flex: 1;
+        }
+        .user {
+          display: flex;
+          align-items: center;
+          justify-content: space-around;
+          flex: 1;
+
+          .nav-btn {
+            background-color: #3e3c62;
+            border: 0;
+            border-radius: 0px;
+            color: white;
+            padding: 5px;
+
+            cursor: pointer;
+          }
+          .user_name {
+            font-weight: bolder;
+          }
+        }
+        .user img {
+          width: 35px;
+          height: 35px;
+          border-radius: 50%;
+          object-fit: cover;
+        }
+      }
+      .search {
+        width: 100%;
+
+        .searchForm {
+          width: 100%;
+          display: flex;
+        }
+        .searchForm input {
+          height: 23px;
+          width: 100%;
+          background: transparent;
+          border-bottom: 1px solid rgb(255, 255, 255);
+          border-top: 0px;
+          border-left: 0px;
+          border-right: 0px;
+          color: white;
+          cursor: pointer;
+          padding: 10px;
+          font-size: 15px;
+        }
+        .searchForm input:focus {
+          font-size: 13px;
+          height: 23px;
+          width: 100%;
+          background: transparent;
+          border-bottom: 1px solid rgb(255, 255, 255);
+          border-top: 0px;
+          border-left: 0px;
+          border-right: 0px;
+          color: white;
+          cursor: pointer;
+          padding: 10px;
+          outline: none;
+        }
+
+        .searchForm input::placeholder {
+          color: aliceblue;
+        }
+        .userChat {
+          height: 60px;
+          color: white;
+          display: flex;
+          width: 100%;
+          align-items: center;
+
+          .userChat-info {
+            .user1 {
+              font-weight: bolder;
+            }
+            .message1 {
+              font-size: 12px;
+            }
+          }
+        }
+        .userChat:hover {
+          background-color: #2f2c54;
+        }
+        .userChat img {
+          height: 38px;
+          margin: 10px;
+          border-radius: 50%;
+        }
+      }
+      .chats {
+        .userChat {
+          height: 60px;
+          color: white;
+          display: flex;
+          width: 100%;
+          align-items: center;
+
+          .userChat-info {
+            .user1 {
+              font-weight: bolder;
+            }
+            .message1 {
+              font-size: 12px;
+            }
+          }
+        }
+        .userChat:hover {
+          background-color: #2f2c54;
+        }
+        .userChat img {
+          height: 38px;
+          margin: 10px;
+          border-radius: 50%;
+        }
+      }
+    }
+    .chat {
+      flex: 2;
+    }
+  }
+}

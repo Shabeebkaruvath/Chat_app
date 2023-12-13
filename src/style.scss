@@ -1,5 +1,7 @@
 $regcolor: #0068ad;
-$maincolor: #7aff6e;
+$maincolor: #68bc71;
+$subcolor: #ffffff;
+$background: #000000;
 $mainfont: "Poppins";
 .App {
   font-family: $mainfont;
@@ -73,14 +75,14 @@ $mainfont: "Poppins";
   }
 }
 .home {
-  background-color: $regcolor;
+  background-image: linear-gradient(to right, #fe7d6b, #ba8dc7);
   height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
   color: rgb(255, 255, 255);
   .homeSub {
-    border: 1px solid white;
+    border: 1px solid $maincolor;
     border-radius: 10px;
     width: 70%;
     height: 80%;
@@ -88,18 +90,20 @@ $mainfont: "Poppins";
     overflow: hidden;
     .slidebar {
       flex: 1;
-      background-color: #3e3c62;
-      color: black;
+      background-color: $background;
+
+      color: $subcolor;
       .navbar {
         height: 50px;
         padding: 10px;
-        color: white;
-        background-color: #2f2c53;
+        color: $subcolor;
+        background-color: $background;
         display: flex;
         align-items: center;
         .logo {
+          color: $maincolor;
           font-weight: bolder;
-          font-family: $mainfont;
+          font-family: serif;
           margin: 5px;
           flex: 1;
         }
@@ -107,13 +111,12 @@ $mainfont: "Poppins";
           display: flex;
           align-items: center;
           justify-content: space-around;
-          flex: 1;
 
           .nav-btn {
-            background-color: #3e3c62;
-            border: 0;
+            background-color: #ffffff;
+            border: 1px solid;
             border-radius: 0px;
-            color: white;
+            color: rgb(0, 0, 0);
             padding: 5px;
 
             cursor: pointer;
@@ -123,9 +126,10 @@ $mainfont: "Poppins";
           }
         }
         .user img {
-          width: 35px;
-          height: 35px;
-          border-radius: 50%;
+          border-radius: 40%;
+          height: 40px;
+          padding: 10px;
+          cursor: pointer;
           object-fit: cover;
         }
       }
@@ -139,12 +143,13 @@ $mainfont: "Poppins";
         .searchForm input {
           height: 23px;
           width: 100%;
-          background: transparent;
-          border-bottom: 1px solid rgb(255, 255, 255);
+          background: $background;
+
+          border-bottom: 1px solid #242424;
           border-top: 0px;
           border-left: 0px;
           border-right: 0px;
-          color: white;
+          color: $subcolor;
           cursor: pointer;
           padding: 10px;
           font-size: 15px;
@@ -153,23 +158,23 @@ $mainfont: "Poppins";
           font-size: 13px;
           height: 23px;
           width: 100%;
-          background: transparent;
-          border-bottom: 1px solid rgb(255, 255, 255);
+          background: $background;
+          color: $subcolor;
           border-top: 0px;
           border-left: 0px;
           border-right: 0px;
-          color: white;
+          color: $subcolor;
           cursor: pointer;
           padding: 10px;
           outline: none;
         }
 
         .searchForm input::placeholder {
-          color: aliceblue;
+          color: $subcolor;
         }
         .userChat {
           height: 60px;
-          color: white;
+          color: $subcolor;
           display: flex;
           width: 100%;
           align-items: center;
@@ -184,7 +189,7 @@ $mainfont: "Poppins";
           }
         }
         .userChat:hover {
-          background-color: #2f2c54;
+          background-color: #242424;
         }
         .userChat img {
           height: 38px;
@@ -195,7 +200,7 @@ $mainfont: "Poppins";
       .chats {
         .userChat {
           height: 60px;
-          color: white;
+          color: $subcolor;
           display: flex;
           width: 100%;
           align-items: center;
@@ -210,7 +215,7 @@ $mainfont: "Poppins";
           }
         }
         .userChat:hover {
-          background-color: #2f2c54;
+          background-color: #242424;
         }
         .userChat img {
           height: 38px;
@@ -221,6 +226,90 @@ $mainfont: "Poppins";
     }
     .chat {
       flex: 2;
+      background-color: $background;
+
+      color: $subcolor;
+      display: flex;
+      flex-direction: column;
+      .chatInfo {
+        width: 100%;
+        top: 0;
+        height: 50px;
+        padding: 10px 0px 10px 0px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .chatUser {
+        width: 50px;
+        padding: 10px;
+        display: flex;
+        align-items: center;
+      }
+      .chatUser img {
+        border-radius: 40%;
+        height: 40px;
+        padding: 10px;
+        cursor: pointer;
+      }
+      .chatIcons img {
+        height: 30px;
+        padding: 10px;
+        cursor: pointer;
+      }
+      .chatIcons {
+        width: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+      }
+      .messages {
+        background: #050505;
+        height: calc(100% - 150px);
+        padding: 10px;
+      }
+      .input {
+        display: flex;
+        align-items: center;
+        height: 50px;
+        padding: 5px;
+        background: wheat;
+        input {
+          padding: 10px;
+          width: 70%;
+          background: transparent;
+          border: none;
+        }
+        input[type="text"]:focus {
+          font-size: small;
+          font-family: serif;
+          font-weight: 500;
+          outline: none;
+        }
+        .send{
+          display: flex;
+          align-items: stretch;
+          justify-content: center;
+          button{
+            border-radius: 0;
+            border: 0;
+            background: #0068ad;
+            color: $subcolor;
+            padding: 10px;
+            margin: 5px;
+            width: 60px;
+            cursor: pointer;
+          }
+          button:hover{
+             background-color: #195881;
+            }
+          img{
+            height: 30px;
+            gap: 5px;
+            margin: 5px;
+          }
+        }
+      }
     }
   }
 }

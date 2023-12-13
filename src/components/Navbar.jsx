@@ -9,7 +9,7 @@ function Navbar() {
       <div className="user">
         <img src={user} alt="user-profile" />
         <p className="user_name">edn</p>
-        <button className="nav-btn">Logout</button>
+         
       </div>
     </div>
   )

@@ -2,7 +2,23 @@ $regcolor: #0068ad;
 $maincolor: #68bc71;
 $subcolor: #ffffff;
 $background: #000000;
-$mainfont: "Poppins";
+$mainfont: "Nunito";
+
+@mixin mobile {
+  @media screen and (max-width:480px) {
+    @content;
+  }
+}
+@mixin tablet {
+  @media screen and (max-width:768px) {
+    @content;
+  }
+}
+@mixin laptop {
+  @media screen and (max-width:1200px) {
+    @content;
+  }
+}
 .App {
   font-family: $mainfont;
 }
@@ -21,12 +37,14 @@ $mainfont: "Poppins";
       color: blue;
       cursor: pointer;
       font-weight: bolder;
+      text-decoration: none;
     }
     span {
       color: rgb(255, 0, 0);
       font-variant: petite-caps;
       cursor: pointer;
       font-weight: bolder;
+      text-decoration: none;
     }
     background-color: white;
     padding: 20px 60px;
@@ -47,7 +65,14 @@ $mainfont: "Poppins";
         border-right: 0px;
         height: 25px;
         cursor: pointer;
+        font-size:small;
+        &:focus{
+         
+        outline: none;
+        }
+         
       }
+       
 
       input[type="file"] {
         border: 0;
@@ -84,16 +109,20 @@ $mainfont: "Poppins";
   .homeSub {
     border: 1px solid $maincolor;
     border-radius: 10px;
-    width: 70%;
-    height: 80%;
+    width: 75%;
+    height: 90%;
     display: flex;
     overflow: hidden;
+    @include tablet(){
+       width: 90%;
+    }
     .slidebar {
       flex: 1;
       background-color: $background;
-
+      position: relative;
       color: $subcolor;
       .navbar {
+        border-bottom: 1px solid #333333;
         height: 50px;
         padding: 10px;
         color: $subcolor;
@@ -103,9 +132,10 @@ $mainfont: "Poppins";
         .logo {
           color: $maincolor;
           font-weight: bolder;
-          font-family: serif;
+          font-family: "Raleway";
           margin: 5px;
           flex: 1;
+          
         }
         .user {
           display: flex;
@@ -123,6 +153,7 @@ $mainfont: "Poppins";
           }
           .user_name {
             font-weight: bolder;
+           
           }
         }
         .user img {
@@ -148,13 +179,14 @@ $mainfont: "Poppins";
           border-bottom: 1px solid #242424;
           border-top: 0px;
           border-left: 0px;
-          border-right: 0px;
+          border-right: 1px solid #333333;
           color: $subcolor;
           cursor: pointer;
           padding: 10px;
           font-size: 15px;
         }
         .searchForm input:focus {
+          border-right: 1px solid #333333;
           font-size: 13px;
           height: 23px;
           width: 100%;
@@ -162,7 +194,6 @@ $mainfont: "Poppins";
           color: $subcolor;
           border-top: 0px;
           border-left: 0px;
-          border-right: 0px;
           color: $subcolor;
           cursor: pointer;
           padding: 10px;
@@ -176,9 +207,9 @@ $mainfont: "Poppins";
           height: 60px;
           color: $subcolor;
           display: flex;
-          width: 100%;
           align-items: center;
-
+          width: 100%;
+          border-right: 1px solid #333333;
           .userChat-info {
             .user1 {
               font-weight: bolder;
@@ -190,6 +221,7 @@ $mainfont: "Poppins";
         }
         .userChat:hover {
           background-color: #242424;
+          border-right: 1px solid #333333;
         }
         .userChat img {
           height: 38px;
@@ -198,6 +230,13 @@ $mainfont: "Poppins";
         }
       }
       .chats {
+        border-right: 1px solid #333333;
+        overflow: scroll;
+        height: calc(100% - 113px);
+        overflow-x: hidden;
+        &::-webkit-scrollbar {
+          display: none;
+        }
         .userChat {
           height: 60px;
           color: $subcolor;
@@ -239,6 +278,9 @@ $mainfont: "Poppins";
         display: flex;
         align-items: center;
         justify-content: space-between;
+        font-family: "Nunito";
+        text-transform: capitalize;
+        border-bottom: 1px solid #333333;
       }
       .chatUser {
         width: 50px;
@@ -264,49 +306,117 @@ $mainfont: "Poppins";
         justify-content: flex-end;
       }
       .messages {
-        background: #050505;
+        background: $background;
         height: calc(100% - 150px);
         padding: 10px;
+        overflow: scroll;
+        overflow-x: hidden;
+        &::-webkit-scrollbar {
+          display: none;
+        }
+        .message {
+          display: flex;
+          gap: 20px;
+          margin-bottom: 20px;
+
+          .messageInfo {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            span {
+              font-size: x-small;
+              color: gray;
+            }
+
+            img {
+              width: 35px;
+              height: 35px;
+              border-radius: 40%;
+              object-fit: cover;
+            }
+          }
+          .messageContent {
+            max-width: 75%;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 10px;
+            img {
+              width: 50%;
+              border-radius: 10px 10px 0px 10px;
+            }
+            p {
+              background: #333333;
+              padding: 5px;
+              border-radius: 10px 10px 10px 0px;
+              text-transform: math-auto;
+              font-family: "Nunito";
+              max-width: max-content;
+            }
+          }
+          &.owner {
+            flex-direction: row-reverse;
+            p {
+              background: #444444;
+              padding: 8px;
+              border-radius: 10px 10px 0px 10px;
+              text-transform: math-auto;
+              font-family: "Nunito";
+            }
+          }
+        }
       }
       .input {
         display: flex;
+        border-top: 1px solid #383838;
         align-items: center;
         height: 50px;
         padding: 5px;
-        background: wheat;
+        background: $background;
+        color: $subcolor;
         input {
-          padding: 10px;
+          padding: 5px 5px 5px 0px;
+          height: calc(100% - 5px);
           width: 70%;
           background: transparent;
+          color: $subcolor;
           border: none;
+          cursor: pointer;
+        }
+        input::placeholder {
+          color: $subcolor;
         }
         input[type="text"]:focus {
           font-size: small;
           font-family: serif;
           font-weight: 500;
           outline: none;
+          color: #e9e9e9;
+          cursor: pointer;
         }
-        .send{
+        .send {
           display: flex;
           align-items: stretch;
           justify-content: center;
-          button{
+          gap: 5px;
+          button {
             border-radius: 0;
             border: 0;
-            background: #0068ad;
+            background: $maincolor;
             color: $subcolor;
             padding: 10px;
-            margin: 5px;
+
             width: 60px;
             cursor: pointer;
           }
-          button:hover{
-             background-color: #195881;
-            }
-          img{
+          button:hover {
+            background-color: #509257;
+          }
+          img {
             height: 30px;
             gap: 5px;
             margin: 5px;
+            cursor: pointer;
           }
         }
       }

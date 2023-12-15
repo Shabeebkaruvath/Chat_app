@@ -1,26 +1,29 @@
-import React from 'react';
-import user from '../img/user.png';
-import { auth } from '../firebase'; // Import your Firebase authentication instance
+import React, { useContext } from 'react';
 import '../style.scss';
+import { signOut } from 'firebase/auth';
+import { auth } from '../firebase';
+import {AuthContext} from "../context/AuthContext"
 
 function Navbar() {
-  const handleSignOut = async () => {
-    try {
-      await auth.signOut(); // Sign the user out
-      // Redirect or perform any necessary actions after signing out...
-    } catch (error) {
-      // Handle sign-out errors, if any
-      console.error('Error signing out:', error);
-    }
+  const {currentUser} = useContext(AuthContext)
+  const handleSignOut = () => {
+    signOut(auth)
+      .then(() => {
+        // Handle sign-out success if needed
+      })
+      .catch((error) => {
+        // Handle sign-out error if needed
+        console.error('Sign-out error:', error);
+      });
   };
 
   return (
     <div className="navbar">
       <span className="logo">Prometheus</span>
       <div className="user">
-        <img src={user} alt="user-profile" />
+        <img src={currentUser.photoURL} alt="user-profile" />
         <p className="user_name">
-          <button onClick={handleSignOut}>Sign Out</button>
+          <button onClick={handleSignOut}>{currentUser.displayName}</button>
         </p>
       </div>
     </div>
@@ -28,4 +31,3 @@ function Navbar() {
 }
 
 export default Navbar;
-

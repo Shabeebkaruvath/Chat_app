@@ -48,10 +48,11 @@ function Register() {
                 uid: user.uid,
                 photoURL: downloadURL,
               });
+              await setDoc(doc(db,"userChat",res.user.uid),{})
 
               // Show success message and reload the page after registration
               window.alert('Registration Completed');
-              window.location.reload();
+              navigate('/')
             } catch (docError) {
               console.error('Error updating user document:', docError);
               setError('Error updating user document');
@@ -59,7 +60,7 @@ function Register() {
           });
         }
       );
-      navigate('/')
+      
     } catch (error) {
       const errorCode = error.code;
       const errorMessage = error.message;
@@ -116,4 +117,4 @@ function Register() {
   );
 }
 
-export default Register;
+export default Register; 

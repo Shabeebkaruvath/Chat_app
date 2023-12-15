@@ -16,7 +16,7 @@ function Login() {
     e.preventDefault();
     const email = e.target.email.value;
     const password = e.target.password.value;
-
+  
     try {
       const userCredential = await signInWithEmailAndPassword(auth, email, password);
       // If login is successful, redirect to home page
@@ -24,10 +24,16 @@ function Login() {
         navigate('/'); // Redirect to home page or any other route
       }
     } catch (error) {
-      const errorCode = error.code;
       const errorMessage = error.message;
-      console.error(errorCode, errorMessage);
-      setError(errorMessage);
+      const invalidCredentialIndex = errorMessage.indexOf('invalid-credential');
+      let specificError = invalidCredentialIndex !== -1 ? errorMessage.slice(invalidCredentialIndex) : errorMessage;
+      // Remove the trailing bracket if present
+      const bracketIndex = specificError.indexOf(')');
+      if (bracketIndex !== -1) {
+        specificError = specificError.slice(0, bracketIndex);
+      }
+  
+      setError(specificError);
     }
   };
 
@@ -54,7 +60,7 @@ function Login() {
           </div>
           <button className='RegisterButton' type='submit'>Login</button>
           {error && <span className='ErrorMessage'>{error}</span>}
-          <h>Don't have an account? <Link to="/register"><span>Sign Up</span></Link></h>
+          <h4>Don't have an account? <Link to="/register"><span>Sign Up</span></Link></h4>
         </form>
       </div>
     </div>
